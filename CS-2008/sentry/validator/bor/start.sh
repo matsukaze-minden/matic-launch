@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-# set -x #echo on
+set -x #echo on
 
 if [ -z "$1" ]
   then
@@ -10,20 +10,18 @@ fi
 
 ADDRESS=$1
 BOR_DIR=${BOR_DIR:-~/.bor}
-DATA_DIR=$BOR_DIR/dataDir
-BUILD_DIR=$GOPATH/src/github.com/maticnetwork/bor/build/bin
+DATA_DIR=$BOR_DIR/data
 
-mkdir -p $BOR_DIR/logs
-
-$BUILD_DIR/bor --datadir $DATA_DIR \
+bor --datadir $DATA_DIR \
   --port 30303 \
-  --rpc --rpcaddr '0.0.0.0' \
-  --rpcvhosts '*' \
-  --rpccorsdomain '*' \
-  --rpcport 8545 \
-  --ipcpath $DATA_DIR/geth.ipc \
-  --rpcapi 'db,eth,net,web3,txpool,bor' \
+  --http --http.addr '0.0.0.0' \
+  --http.vhosts '*' \
+  --http.corsdomain '*' \
+  --http.port 8545 \
+  --ipcpath $DATA_DIR/bor.ipc \
+  --http.api 'eth,net,web3,txpool,bor' \
   --networkid '2008' \
+  --syncmode 'full' \
   --miner.gaslimit '200000000' \
   --miner.gastarget '20000000' \
   --txpool.nolocals \
@@ -36,7 +34,5 @@ $BUILD_DIR/bor --datadir $DATA_DIR \
   --allow-insecure-unlock \
   --nodiscover --maxpeers 1 \
   --metrics \
-  --pprof --pprofport 7071 --pprofaddr '0.0.0.0' \
-  --mine > $BOR_DIR/logs/bor.log 2>&1 &
-
-echo "Node started! Logs are being written to $BOR_DIR/logs/bor.log"
+  --pprof --pprof.port 7071 --pprof.addr '0.0.0.0' \
+  --mine

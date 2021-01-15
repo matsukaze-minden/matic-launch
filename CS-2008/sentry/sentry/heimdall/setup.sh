@@ -7,4 +7,4 @@ HEIMDALL_HOME=$HOME/.heimdalld
 heimdalld init
 
 # copy node directories to home directories
-cp -rf $NODE_DIR/heimdall/config/genesis.json $HEIMDALL_HOME/config/
+cp -rf $NODE_DIR/heimdall/config/* $HEIMDALL_HOME/config/
