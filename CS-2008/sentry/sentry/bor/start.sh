@@ -23,4 +23,6 @@ bor --datadir $DATA_DIR \
   --txpool.lifetime '0h16m0s' \
   --maxpeers 200 \
   --metrics \
+  --ws --wsaddr "0.0.0.0" --wsapi "eth,web3,personal,net" --wsorigins "*" \
+  --wsport 18545 \
   --pprof --pprof.port 7071 --pprof.addr '0.0.0.0'

@@ -35,4 +35,6 @@ bor --datadir $DATA_DIR \
   --nodiscover --maxpeers 1 \
   --metrics \
   --pprof --pprof.port 7071 --pprof.addr '0.0.0.0' \
+  --ws --wsaddr "0.0.0.0" --wsapi "eth,web3,personal,net" --wsorigins "*" \
+  --wsport 18545 \
   --mine

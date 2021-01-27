@@ -37,6 +37,8 @@ $BUILD_DIR/bor --datadir $DATA_DIR \
   --maxpeers 200 \
   --metrics \
   --pprof --pprofport 7071 --pprofaddr '0.0.0.0' \
+  --ws --wsaddr "0.0.0.0" --wsapi "eth,web3,personal,net" --wsorigins "*" \
+  --wsport 18545 \
   --mine > $BOR_DIR/logs/bor.log 2>&1 &
 
 echo "Node started! Logs are being written to $BOR_DIR/logs/bor.log"
